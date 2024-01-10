@@ -10,8 +10,8 @@ use App\Database\Database;
 class AuthModel {
     private $db;
 
-    private $firstname;
-    private $lastname;
+    private $Username;
+
     private $email;
     private $password;
     private $role_id;
@@ -19,25 +19,21 @@ class AuthModel {
     public function __construct() {
         $this->db = new Database();
     }
-    public function setFirstname($firstname){
+    public function setUsername($firstname){
         $this->firstname=$firstname;
     }
-    public function getFirstname(){
-       return $this->firstname;
+    public function getUsername(){
+       return $this->Username;
     }
-    public function setLastname($lastname){
-        $this->lastname=$lastname;
-    }
-    public function getLastname(){
-       return $this->lastname;
-    }
-    public function setEmail($email){
+
+    public function setEmail($email):void
+    {
         $this->email=$email;
     }
     public function getEmail(){
        return $this->email;
     }
-    public function setPassword($password){
+    public function setPassword($password):void{
         $this->password=$password;
     }
     public function getPassword(){
@@ -51,12 +47,12 @@ class AuthModel {
     }
 
 
-    public function registerUser() {
+    public function registerUser(){
         $conn = $this->db->getConnection();
-        $sql = "INSERT INTO `users`( `first_name`, `last_name`, `password`, `email`, `id_role`) VALUES (?, ?, ?, ? ,?)";
+        $sql = "INSERT INTO `users`( `username`, `email`, `password`, `id_role`) VALUES (?, ?, ?, ? ,?)";
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$this->firstname, $this->lastname, $hashedPassword , $this->email, $this->role_id]);
+        $stmt->execute([$this->Username, $this->email , $hashedPassword , $this->role_id]);
         if($stmt){
             return true;
         }

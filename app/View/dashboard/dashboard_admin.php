@@ -23,35 +23,35 @@ include_once '../app/View/dashboard/includes/header.php';
                         <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/> <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </svg>
                         </span>
                     </div>
-               total readers :100
+               total Archived : <?=$Awiki->num?>
              
             </div>
             </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajouter">
-                ajouter
+                ajouter categorie
             </button>
             <div>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">title</th>
-                        <th scope="col">description</th>
+                        <th scope="col">username</th>
+                        <th scope="col">email</th>
                         <th scope="col">#</th>
                     </tr>
                     </thead>
 <?php
 
-foreach ($wiki as $rs):
+foreach ($users as $rs):
 ?> <tr>
-                        <th scope="row"><?=$rs->title?></th>
-                        <td><?=$rs->description?></td>
+                        <th scope="row"><?=$rs->username?></th>
+                        <td><?=$rs->email?></td>
                         <td>
                             <a href="./user/deleteWikis/<?=$rs->id?>" type="button" class="btn btn-danger">supprimer</a>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#update<?=$rs->id?>">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateuser<?=$rs->id?>">
                                 modifier
                             </button></td>
                     </tr>
-    <div class="modal fade" id="update<?=$rs->id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="updateuser<?=$rs->id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -60,27 +60,14 @@ foreach ($wiki as $rs):
                 </div>
                 <div class="modal-body">
                     <!-- Form inside the modal -->
-                    <form method="post" action="./user/updateWikis/<?=$rs->id?>">
+                    <form method="post" action="./user/updateUser/<?=$rs->id?>">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">title</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="title" value="<?=$rs->title?>">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="title" value="<?=$rs->username?>">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3"><?=$rs->description?></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">contenue</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3"><?=$rs->contenue?></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">categorie</label>
-                            <select id="category" name="cat" required>
-                                <?php foreach ($cate as $cat):?>
-                                    <option value="<?=$cat->id?>"><?=$cat->name?></option>
-                                <?php endforeach; ?>
-                                <!-- Add more options as needed -->
-                            </select>
+                            <label for="exampleFormControlInput1" class="form-label">title</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name" name="email" value="<?=$rs->email?>">
                         </div>
                 </div>
                 <div class="modal-footer">

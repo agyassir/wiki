@@ -17,22 +17,22 @@ class AuthController {
         session_destroy();
 header('location: ?uri=');
     }
-
+    public function register(){
+        include_once '../app/view/register.php';
+    }
     public function registration() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['submit']=='regester') {
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
+            $username = $_POST['lastname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $role_id=$_POST['userType'];
+            $role_id=2;
 
             $newUser = new AuthModel();
-            $newUser->setFirstname($firstname);
-            $newUser->setLastname($lastname);
+            $newUser->setUsername($username);
             $newUser->setEmail($email);
             $newUser->setPassword($password);
             $newUser->setRoleId($role_id);
-
+$newUser->registerUser();
         } 
     }
 
@@ -44,16 +44,12 @@ header('location: ?uri=');
          
             $user=$loginUser->loginUser($email , $password);
             if($user){
-
-
-               
                 $_SESSION['email']= $user->email;
-                $_SESSION['first']= $user->first_name;
-                $_SESSION['last']=$user->last_name;
-                $_SESSION['role_id']=$user->id_role;
-                $_SESSION['user_id']=$user->user_id;
+                $_SESSION['username']= $user->username;
+                $_SESSION['role_id']=$user->role;
+                $_SESSION['user_id']=$user->id;
 
-            include_once '../app/View/login.php';
+            $this->index();
            }
         } 
     }

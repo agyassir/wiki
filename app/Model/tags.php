@@ -69,4 +69,25 @@ return $result;
         return $result;
     }
 
+    public function ajout($name){
+        $conn = $this->db->getConnection();
+        $sql = "insert into `tag`('type') values (?)";
+        $stmt = $conn->prepare($sql);
+        $rs=    $stmt->execute([$name]);
+        return $rs;
+    }
+    public function delete($id){
+        $conn = $this->db->getConnection();
+        $sql = "delete from `tag`where id = ?";
+        $stmt = $conn->prepare($sql);
+        $rs=    $stmt->execute([$id]);
+        return $rs;
+    }
+    public function update($id,$name){
+        $conn = $this->db->getConnection();
+        $sql = "UPDATE `tag` SET `tag`= ? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $rs=    $stmt->execute([$name,$id]);
+        return $rs;
+    }
 }

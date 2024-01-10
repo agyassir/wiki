@@ -1,397 +1,169 @@
 <?php
-include "../app/View/includes/header.php";
+include '../app/view/includes/header.php';
 ?>
-<div class="banner text-center">
+
+<section class="page-section portfolio" id="portfolio">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-9 mx-auto">
-                <h1 class="mb-5">What Would You <br> Like To Read Today?</h1>
-                <ul class="list-inline widget-list-inline">
-                    <?php
-                    foreach ($tag as $tags):
-                    ?>
-                    <li class="list-inline-item"><a href="user/getwikibytagId/<?=$tags->id?>"><?=$tags->type?></a></li>
-<?php endforeach;?>
-                </ul>
-            </div>
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
         </div>
-    </div>
-
-
-    <svg class="banner-shape-1" width="39" height="40" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0.965848 20.6397L0.943848 38.3906L18.6947 38.4126L18.7167 20.6617L0.965848 20.6397Z" stroke="#040306"
-              stroke-miterlimit="10" />
-        <path class="path" d="M10.4966 11.1283L10.4746 28.8792L28.2255 28.9012L28.2475 11.1503L10.4966 11.1283Z" />
-        <path d="M20.0078 1.62949L19.9858 19.3804L37.7367 19.4024L37.7587 1.65149L20.0078 1.62949Z" stroke="#040306"
-              stroke-miterlimit="10" />
-    </svg>
-
-    <svg class="banner-shape-2" width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d)">
-            <path class="path"
-                  d="M24.1587 21.5623C30.02 21.3764 34.6209 16.4742 34.435 10.6128C34.2491 4.75147 29.3468 0.1506 23.4855 0.336498C17.6241 0.522396 13.0233 5.42466 13.2092 11.286C13.3951 17.1474 18.2973 21.7482 24.1587 21.5623Z" />
-            <path
-                d="M5.64626 20.0297C11.1568 19.9267 15.7407 24.2062 16.0362 29.6855L24.631 29.4616L24.1476 10.8081L5.41797 11.296L5.64626 20.0297Z"
-                stroke="#040306" stroke-miterlimit="10" />
-        </g>
-        <defs>
-            <filter id="filter0_d" x="0.905273" y="0" width="37.8663" height="38.1979" filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                <feOffset dy="4" />
-                <feGaussianBlur stdDeviation="2" />
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
-            </filter>
-        </defs>
-    </svg>
-
-
-    <svg class="banner-shape-3" width="39" height="40" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0.965848 20.6397L0.943848 38.3906L18.6947 38.4126L18.7167 20.6617L0.965848 20.6397Z" stroke="#040306"
-              stroke-miterlimit="10" />
-        <path class="path" d="M10.4966 11.1283L10.4746 28.8792L28.2255 28.9012L28.2475 11.1503L10.4966 11.1283Z" />
-        <path d="M20.0078 1.62949L19.9858 19.3804L37.7367 19.4024L37.7587 1.65149L20.0078 1.62949Z" stroke="#040306"
-              stroke-miterlimit="10" />
-    </svg>
-
-
-    <svg class="banner-border" height="240" viewBox="0 0 2202 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-            d="M1 123.043C67.2858 167.865 259.022 257.325 549.762 188.784C764.181 125.427 967.75 112.601 1200.42 169.707C1347.76 205.869 1901.91 374.562 2201 1"
-            stroke-width="2" />
-    </svg>
-</div>
-<!-- end of banner -->
-<section class="section pb-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 mb-5">
-                <h2 class="h5 section-title">Editors Pick</h2>
-                <article class="card">
-                    <div class="post-slider slider-sm">
-                        <img src="./assets/images/post/post-1.jpg" class="card-img-top" alt="post-thumb">
+        <!-- Portfolio Grid Items-->
+        <div class="row justify-content-center">
+            <!-- Portfolio Item 1-->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-
-                    <div class="card-body">
-                        <h3 class="h4 mb-3"><a class="post-title" href="post-details.html"><?=$rand->title?></a></h3>
-                        <ul class="card-meta list-inline">
-                            <li class="list-inline-item">
-                                <a href="author-single.html" class="card-meta-author">
-                                    <img src="./assets/images/john-doe.jpg">
-                                    <span><?=$rand->username?></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-timer"></i>2 Min To Read
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-calendar"></i>14 jan, 2020
-                            </li>
-                            <li class="list-inline-item">
-                                <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Fish</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <p><?=$rand->description?></p>
-                        <a href="post-details.html" class="btn btn-outline-primary">Read More</a>
-                    </div>
-                </article>
+                    <img class="img-fluid" src="./assets/images/author.jpg" alt="..." />
+                </div>
             </div>
-            <div class="col-lg-4 mb-5">
-                <h2 class="h5 section-title">Trending Post</h2>
-
-                <article class="card mb-4">
-                    <div class="card-body d-flex">
-                        <img class="card-img-sm" src="./assets/images/post/post-3.jpg">
-                        <div class="ml-3">
-                            <h4><a href="post-details.html" class="post-title"></a></h4>
-                            <ul class="card-meta list-inline mb-0">
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-calendar"></i>14 jan, 2020
-                                </li>
-                                <li class="list-inline-item mb-0">
-                                    <i class="ti-timer"></i>2 Min To Read
-                                </li>
-                            </ul>
-                        </div>
+            <!-- Portfolio Item 2-->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                </article>
+                    <img class="img-fluid" src="assets/images/author.jpg" alt="..." />
+                </div>
             </div>
-            <div class="col-lg-4 mb-5">
-                <h2 class="h5 section-title">Popular Post</h2>
-
-                <article class="card">
-                    <div class="post-slider slider-sm">
-                        <img src="./assets/images/post/post-5.jpg" class="card-img-top" alt="post-thumb">
+            <!-- Portfolio Item 3-->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <div class="card-body">
-                        <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">How To Make Cupcakes and Cashmere Recipe At Home</a></h3>
-                        <ul class="card-meta list-inline">
-                            <li class="list-inline-item">
-                                <a href="author-single.html" class="card-meta-author">
-                                    <img src="./assets/images/kate-stone.jpg" alt="Kate Stone">
-                                    <span>Kate Stone</span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-timer"></i>2 Min To Read
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-calendar"></i>14 jan, 2020
-                            </li>
-                            <li class="list-inline-item">
-                                <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="tags.html">City</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Food</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Taste</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <p>It’s no secret that the digital industry is booming. From exciting startups to …</p>
-                        <a href="post-details.html" class="btn btn-outline-primary">Read More</a>
-                    </div>
-                </article>
+                    <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
+                </div>
             </div>
-            <div class="col-12">
-                <div class="border-bottom border-default"></div>
+            <!-- Portfolio Item 4-->
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 5-->
+            <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 6-->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="..." />
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-<section class="section-sm">
+<!-- About Section-->
+<section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
+            <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+        </div>
+        <!-- About Section Button-->
+        <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+                <i class="fas fa-download me-2"></i>
+                Free Download!
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Contact Section-->
+<section class="page-section" id="contact">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
         <div class="row justify-content-center">
-            <div class="col-lg-8  mb-5 mb-lg-0">
-                <h2 class="h5 section-title">Recent Post</h2>
-                <?php
-foreach ($wikis as $wiki):
-?>
-                <article class="card mb-4">
-                    <div class="post-slider">
-                        <img src="./assets/images/post/post-10.jpg" class="card-img-top" alt="post-thumb">
-                        <img src="./assets/images/post/post-1.jpg" class="card-img-top" alt="post-thumb">
+            <div class="col-lg-8 col-xl-7">
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                        <label for="name">Full name</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
-                    <div class="card-body">
-                        <h3 class="mb-3"><a class="post-title" href="post-elements.html"><?=$wiki->title?></a></h3>
-                        <ul class="card-meta list-inline">
-                            <li class="list-inline-item">
-                                <a href="author-single.html" class="card-meta-author">
-                                    <img src="./assets/images/john-doe.jpg" alt="John Doe">
-                                    <span><?=$wiki->username?></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-timer"></i>3 Min To Read
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-calendar"></i>15 jan, 2020
-                            </li>
-                            <li class="list-inline-item">
-                                <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="tags.html">Demo</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Elements</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <p>Heading example Here is example of hedings. You can use this heading by following markdownify rules. For example: use # for heading 1 and use ###### for heading 6.</p>
-                        <a href="post-elements.html" class="btn btn-outline-primary">Read More</a>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                        <label for="email">Email address</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                     </div>
-                </article>
-<?php endforeach;?>
-
+                    <!-- Phone number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                        <label for="phone">Phone number</label>
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                    </div>
+                    <!-- Message input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                        <label for="message">Message</label>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+                </form>
             </div>
-            <aside class="col-lg-4 sidebar-home">
-                <!-- Search -->
-                <div class="widget">
-                    <h4 class="widget-title"><span>Search</span></h4>
-                    <form action="#!" class="widget-search">
-                        <input class="mb-3" id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
-                        <i class="ti-search"></i>
-                        <button type="submit" class="btn btn-primary btn-block">Search</button>
-                    </form>
-                </div>
-
-                <!-- about me -->
-                <div class="widget widget-about">
-                    <h4 class="widget-title">Hi, I am Alex!</h4>
-                    <img class="img-fluid" src="./assets/images/author.jpg" alt="Themefisher">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vel in in donec iaculis tempus odio nunc laoreet . Libero ullamcorper.</p>
-                    <ul class="list-inline social-icons mb-3">
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
-
-                    </ul>
-                    <a href="about-me.html" class="btn btn-primary mb-2">About me</a>
-                </div>
-
-                <!-- Promotion -->
-                <div class="promotion">
-                    <img src="./assets/images/promotion.jpg" class="img-fluid w-100">
-                    <div class="promotion-content">
-                        <h5 class="text-white mb-3">Create Stunning Website!!</h5>
-                        <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur sociis. Etiam nunc amet id dignissim. Feugiat id tempor vel sit ornare turpis posuere.</p>
-                        <a href="https://themefisher.com/" class="btn btn-primary">Get Started</a>
-                    </div>
-                </div>
-
-                <!-- authors -->
-                <div class="widget widget-author">
-                    <h4 class="widget-title">Authors</h4>
-                    <div class="media align-items-center">
-                        <div class="mr-3">
-                            <img class="widget-author-image" src="./assets/images/john-doe.jpg">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="mb-1"><a class="post-title" href="author-single.html">Charls Xaviar</a></h5>
-                            <span>Author &amp; developer of Bexer, Biztrox theme</span>
-                        </div>
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="mr-3">
-                            <img class="widget-author-image" src="./assets/images/kate-stone.jpg">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="mb-1"><a class="post-title" href="author-single.html">Kate Stone</a></h5>
-                            <span>Author &amp; developer of Bexer, Biztrox theme</span>
-                        </div>
-                    </div>
-                    <div class="media align-items-center">
-                        <div class="mr-3">
-                            <img class="widget-author-image" src="./assets/images/john-doe.jpg" alt="John Doe">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="mb-1"><a class="post-title" href="author-single.html">John Doe</a></h5>
-                            <span>Author &amp; developer of Bexer, Biztrox theme</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Search -->
-
-                <div class="widget">
-                    <h4 class="widget-title"><span>Never Miss A News</span></h4>
-                    <form action="#!" method="post" name="mc-embedded-subscribe-form" target="_blank"
-                          class="widget-search">
-                        <input class="mb-3" id="search-query" name="s" type="search" placeholder="Your Email Address">
-                        <i class="ti-email"></i>
-                        <button type="submit" class="btn btn-primary btn-block" name="subscribe">Subscribe now</button>
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                            <input type="text" name="b_463ee871f45d2d93748e77cad_a0a2c6d074" tabindex="-1">
-                        </div>
-                    </form>
-                </div>
-
-                <!-- categories -->
-                <div class="widget widget-categories">
-                    <h4 class="widget-title"><span>Categories</span></h4>
-                    <ul class="list-unstyled widget-list">
-                        <li><a href="tags.html" class="d-flex">Creativity <small class="ml-auto">(4)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Demo <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Elements <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Food <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Microwave <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Natural <small class="ml-auto">(3)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Newyork city <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Nice <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Tech <small class="ml-auto">(2)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Videography <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Vlog <small class="ml-auto">(1)</small></a></li>
-                        <li><a href="tags.html" class="d-flex">Wondarland <small class="ml-auto">(1)</small></a></li>
-                    </ul>
-                </div><!-- tags -->
-                <div class="widget">
-                    <h4 class="widget-title"><span>Tags</span></h4>
-                    <ul class="list-inline widget-list-inline widget-card">
-                        <li class="list-inline-item"><a href="tags.html">City</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Creative</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Decorate</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Demo</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Elements</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Fish</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Food</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Nice</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Season</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Taste</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Tasty</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Vlog</a></li>
-                        <li class="list-inline-item"><a href="tags.html">Wow</a></li>
-                    </ul>
-                </div><!-- recent post -->
-                <div class="widget">
-                    <h4 class="widget-title">Recent Post</h4>
-
-                    <!-- post-item -->
-                    <article class="widget-card">
-                        <div class="d-flex">
-                            <img class="card-img-sm" src="./assets/images/post/post-10.jpg">
-                            <div class="ml-3">
-                                <h5><a class="post-title" href="post/elements/">Elements That You Can Use In This Template.</a></h5>
-                                <ul class="card-meta list-inline mb-0">
-                                    <li class="list-inline-item mb-0">
-                                        <i class="ti-calendar"></i>15 jan, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="widget-card">
-                        <div class="d-flex">
-                            <img class="card-img-sm" src="./assets/images/post/post-3.jpg">
-                            <div class="ml-3">
-                                <h5><a class="post-title" href="post-details.html">Advice From a Twenty Something</a></h5>
-                                <ul class="card-meta list-inline mb-0">
-                                    <li class="list-inline-item mb-0">
-                                        <i class="ti-calendar"></i>14 jan, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="widget-card">
-                        <div class="d-flex">
-                            <img class="card-img-sm" src="./assets/images/post/post-7.jpg">
-                            <div class="ml-3">
-                                <h5><a class="post-title" href="post-details.html">Advice From a Twenty Something</a></h5>
-                                <ul class="card-meta list-inline mb-0">
-                                    <li class="list-inline-item mb-0">
-                                        <i class="ti-calendar"></i>14 jan, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Social -->
-                <div class="widget">
-                    <h4 class="widget-title"><span>Social Links</span></h4>
-                    <ul class="list-inline widget-social">
-                        <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </aside>
         </div>
     </div>
 </section>

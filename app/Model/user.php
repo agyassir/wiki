@@ -54,13 +54,13 @@ class user {
  
     public function findAll() {
         $conn = $this->db->getConnection();
-        $sql = "SELECT * FROM `users`";
+        $sql = "SELECT * FROM `users` where role !=1";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-        if($result){
+
             return $result;
-        }
+
     }
 
     public function updateUser($userId, $firstname, $lastname, $email, $password, $role_id){

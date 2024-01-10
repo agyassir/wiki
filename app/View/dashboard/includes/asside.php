@@ -8,16 +8,18 @@
                             ?>
 
 
-                    <li><a href="?uri=admin/getAllUser">Users</a></li>
+                    <li><a href="./admin/getAllUser">Users</a></li>
                    
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Reservations</a></li>
+                    <li><a href="../user/AgetTags">tags</a></li>
+                    <li><a href="#">categories</a></li>
+                    <li><a href="#">wikis</a></li>
+                    <li><a href="#">authors</a></li>
+
                   
                   <?php
                     break;
                         case 2:?>
-                    <li><a href="?uri=">Events</a></li>
-                    <li><a href="?uri=organisateur/getAllReservation">Reservations</a></li>
+                    <li><a href="?uri=">MyWikis</a></li>
                     <?php
                     break;
                     }

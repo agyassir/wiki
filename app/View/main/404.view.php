@@ -135,7 +135,7 @@ include "../app/View/includes/header.php";
                     We Can’t Seem To Find The
                     Page You’re Looking For</h1>
                 <h3 class="mb-4">Error Code : <span class="text-primary">404</span></h3>
-                <a href="/wiki" class="btn btn-primary">Back To Home</a>
+                <a href="/wiki/" class="btn btn-primary">Back To Home</a>
             </div>
         </div>
     </div>
