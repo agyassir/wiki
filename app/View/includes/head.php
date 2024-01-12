@@ -3,20 +3,70 @@
 
 <head>
 
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YouEvent</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
-    type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>wiki</title>
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="./assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="./assets/socicon/css/styles.css">   <link rel="stylesheet" href="assets/parallax/jarallax.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="././assets/theme/css/style.css">
+    <link rel="preload" as="style" href="./assets/mobirise/css/mbr-additional.css?v=Czi4k3"><link rel="stylesheet" href="./assets/mobirise/css/mbr-additional.css?v=Czi4k3" type="text/css">
 
     <link rel="stylesheet" href="./assets/css/style">
 </head>
 
 <body>
+<section data-bs-version="5.1" class="menu menu2 cid-u13Wz1ufB1" once="menu" id="menu-5-u13Wz1ufB1">
 
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+				<span class="navbar-logo">
+
+						<img src="assets/images/wikipedia-icon-icons.com-50721-192x192.png" alt="Mobirise Website Builder" style="height: 4.3rem;">
+
+				</span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="./?uri=user/home">Wiki</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<?php
+if(isset($_SESSION['role_id'])){
+
+switch ($_SESSION['role_id']){
+    case 1:
+
+?>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="./user/getUsers">Continuer l'aventure</a>
+                </div>
+                <?php
+   break;
+    case 2:?>
+        <div class="navbar-buttons mbr-section-btn">
+            <a class="btn btn-primary display-4" href="./user/">Continuer l'aventure</a>
+        </div>
+<?php
+break;
+}}else{
+    ?>
+    <div class="navbar-buttons mbr-section-btn">
+        <a class="btn btn-primary display-4" href="./user/login">Commencer l'aventure</a>
+    </div>     <?php
+}
+                ?>
+            </div>
+        </div>
+    </nav>
+</section>

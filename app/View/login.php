@@ -1,9 +1,11 @@
-<?php include_once '../app/View/includes/head.php'; ?>
+<?php include_once '../app/View/includes/header.php'; ?>
 
+
+</head>
 <body>
     <div class="container d-flex justify-content-center mt-8" style="height: 600px;">
         <div class="d-flex w-full col-md-4 align-items-center">
-            <form class="shadow p-3" id="formular" action="auth/loginUser" method="post" novalidate>
+            <form class="shadow p-3" id="formular" action="../auth/loginUser" method="post" novalidate>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
@@ -20,8 +22,9 @@
                 <div class="mb-3">
                     <button class="btn btn-primary" name="submit" value="login" type="submit">Se connecter</button>
                 </div>
-                <div class="mt-3">
-                    <p>If you don't have an account, <a href="auth/register">create one</a>.</p>
+                <div class="mt-3 ">
+                    <p>If you don't have an account, <a href="register">create one</a>.</p>
+                    <a href="../">back home</a>
                 </div>
             </form>
         </div>

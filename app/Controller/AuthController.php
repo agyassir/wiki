@@ -15,7 +15,7 @@ class AuthController {
     }
     public function logout(){
         session_destroy();
-header('location: ?uri=');
+header('location: ../ ');
     }
     public function register(){
         include_once '../app/view/register.php';

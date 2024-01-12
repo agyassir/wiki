@@ -20,7 +20,7 @@ class categorie{
 
     public function ajout($name){
         $conn = $this->db->getConnection();
-        $sql = "insert into `categorie`('name') values (?)";
+        $sql = "INSERT INTO `categorie`( `name`) VALUES (?)";
         $stmt = $conn->prepare($sql);
     $rs=    $stmt->execute([$name]);
     return $rs;

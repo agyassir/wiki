@@ -4,6 +4,7 @@ use App\Model\tags;
 use App\Model\wiki;
 use App\Model\categorie;
 use App\Model\user;
+use App\Model\tagger;
 
 class UserController
 {
@@ -34,16 +35,18 @@ class UserController
                 include_once '../app/View/dashboard/dashboard.php';
                 exit();
             }else{
-                 $mine=$this->countAllWikis();
-                 $Awiki=$this->countArchivedWikis();
-                 $cate=$this->getAllCategorie();
-                 $users= $this->getAllUsers();
-                include_once '../app/View/dashboard/dashboard_admin.php';
-                exit();
+//                 $this->getUsers();
+                 header('location:../user/getUsers');
             }
         } else {
-            include_once '../app/View/login.php';
+            $this->home();
         }
+    }
+    public function home(){
+        $tag=$this->getTags();
+        $wikis=$this->getlatestWiki();
+        $rand=$this->getrandomWiki();
+        include_once '../app/View/main/home.php';
     }
 public function getTags()
 {
@@ -51,6 +54,18 @@ $tags=new tags();
 $tag=$tags->tagsexisting();
 return $tag;
 }
+    public function tagdisponible($id){
+        $tags=new tags();
+        $tag=$tags->tagsdis($id);
+        return $tag;
+    }
+    public function AgetAllwiki()
+    {
+        $tags=new wiki();
+        $wiki=$tags->getAllwiki();
+        include_once "../app/View/dashboard/allwikis.php";
+        exit();
+    }
     public function AgetTags()
     {
         $tags=new tags();
@@ -74,7 +89,7 @@ public function getlatestWiki(){
         $rs=$wiki->tagswiki($id);
         $tag=$tags->tagsbyId($id);
 
-        include_once '../app/View/main/wikisbyfilter.php';
+        include_once '../app/View/main/wikis.php';
 
     }
     public function getwikibytagId($id){
@@ -86,10 +101,19 @@ public function getlatestWiki(){
 
         return $cat->allcategories();
     }
+    public function Acategories(){
+        $cat=$this->getAllCategorie();
+        include_once "../app/View/dashboard/Acategories.php";
+        exit();
+    }
     public function createCategorie(){
+        if (isset($_POST['creatcat'])){
         $name=$_POST['name'];
         $cat= new Categorie();
-        $cat->ajout($name);
+        $rs=$cat->ajout($name);}
+        if($rs){
+            header('location:../user/Acategories');
+        }
     }
     public function modifyCategorie(){
         $name=$_POST['name'];
@@ -99,12 +123,20 @@ public function getlatestWiki(){
     }
     public function deleteCategorie($id){
         $cat= new Categorie();
-        $cat->delete($id);
+        $rs=$cat->delete($id);
+        if($rs){
+            header('location:../Acategories');
+        }
     }
     public function createtag(){
+        if (isset($_POST['createtags'])){
         $name=$_POST['type'];
         $tag= new tags();
-        $tag->ajout($name);
+        $rs=$tag->ajout($name);
+        }
+        if ($rs){
+            header('location:../user/AgetTags');
+        }
     }
     public function modifytag(){
         $name=$_POST['name'];
@@ -187,5 +219,63 @@ public function getlatestWiki(){
         $rs=$user->findAll();
         return $rs;
 
+    }
+    public function archive(){
+        $tags=new wiki();
+        $wiki=$tags->getarchwiki();
+        include_once "../app/View/dashboard/archive.php";
+        exit();
+    }
+    public function deleteAWikis($id){
+        $wiki=new wiki();
+        $wiki->setid($id);
+        $rs=$wiki->delete();
+        if ($rs){
+            header('location:/wiki/user/archive');
+        }
+    }
+    public function approve($id){
+        $wiki=new wiki();
+        $wiki->setid($id);
+        $rs=$wiki->archive();
+        if ($rs){
+            header('location:/wiki/user/archive');
+        }
+    }
+    public function updatetags($id){
+        $wiki=new tags();
+        if (isset($_POST['updatetags'])){
+            $wiki->setid($id);
+            $wiki->setName($_POST['type']);
+            $rs=$wiki->update();
+            if ($rs){
+                header('location:../../user/AgetTags');
+            }
+        }
+    }
+    public function login(){
+        include_once '../app/View/login.php';
+    }
+    public function getUsers(){
+        $mine=$this->countAllWikis();
+        $Awiki=$this->countArchivedWikis();
+        $users= $this->getAllUsers();
+        include_once '../app/View/dashboard/dashboard_admin.php';
+        exit();
+    }
+    public function register(){
+        include_once '../app/view/register.php';
+    }
+    public function tagWikis($id){
+        $wiki=new tagger();
+        if (isset($_POST['Ajoutertags'])){
+            $wiki->setWiki($id);
+           $wiki->setTag($_POST['type']);
+//            $s= $wiki->getTag();
+            $rs=$wiki->ajouterTagger();
+            if ($rs){
+                header('location:../../user/');
+            }
+        }
     }
 }

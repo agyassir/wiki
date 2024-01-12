@@ -129,7 +129,7 @@ private $db;
     }
     public function getAllwiki(){
         $conn = $this->db->getConnection();
-        $sql = "SELECT * FROM `wiki` ";
+        $sql = "SELECT wiki.*,users.username FROM `wiki` join users on wiki.author=users.id where archivee = 1 ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -138,7 +138,7 @@ private $db;
 
     public function latestWiki(){
         $conn = $this->db->getConnection();
-        $sql = "SELECT wiki.* ,users.username FROM wiki join users on wiki.author=users.id   where `archivee` = 0 ORDER BY wiki.id DESC LIMIT 5";
+        $sql = "SELECT wiki.* ,users.username FROM wiki join users on wiki.author=users.id   where `archivee` = 1 ORDER BY wiki.id DESC LIMIT 4";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -146,7 +146,7 @@ private $db;
     }
     public function randomwiki(){
         $conn = $this->db->getConnection();
-        $sql = "SELECT wiki.* , users.username FROM `wiki` join users on wiki.author=users.id  where `archivee` = 0 ORDER BY RAND() LIMIT 1;";
+        $sql = "SELECT wiki.* , users.username FROM `wiki` join users on wiki.author=users.id  where `archivee` = 1 ORDER BY RAND() LIMIT 1;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchObject();
@@ -154,10 +154,18 @@ private $db;
     }
     public function tagswiki($id){
         $conn = $this->db->getConnection();
-        $sql = "SELECT wiki.* , users.username FROM `wiki` join users on wiki.author=users.id join tagger on tagger.wiki=wiki.id join tag on tagger.tag=tag.id join categorie on wiki.cat=categorie.id where tag.id=? AND  where `archivee` = 0;";
+        $sql = "SELECT wiki.* , users.username FROM `wiki` join users on wiki.author=users.id join tagger on tagger.wiki=wiki.id join tag on tagger.tag=tag.id join categorie on wiki.cat=categorie.id where tag.id=? AND  `archivee` = 0;";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+    public function specificwiki($id){
+        $conn = $this->db->getConnection();
+        $sql = "SELECT wiki.* , users.username , categorie.name FROM `wiki` join users on wiki.author=users.id join categorie on wiki.cat = categorie.id where wiki.id=? AND `archivee` = 1;";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        $result = $stmt->fetchObject();
         return $result;
     }
     public function MyWiki($id){
@@ -211,7 +219,7 @@ private $db;
     }
     public function getarchwiki(){
         $conn = $this->db->getConnection();
-        $sql = "SELECT * FROM `wiki` where `archivee` = 1";
+        $sql = "SELECT * FROM `wiki` where `archivee` = 0";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -219,7 +227,7 @@ private $db;
     }
     public function CMyWiki($id){
         $conn = $this->db->getConnection();
-        $sql = "SELECT COUNT(id) AS num FROM wiki WHERE author = ? AND archivee = 0;";
+        $sql = "SELECT COUNT(id) AS num FROM wiki WHERE author = ? AND archivee = 1;";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
         $result = $stmt->fetchObject();
@@ -235,7 +243,7 @@ private $db;
     }
     public function CArchivedWikis(){
         $conn = $this->db->getConnection();
-        $sql = "SELECT COUNT(id) AS num FROM wiki where archivee = 1;";
+        $sql = "SELECT COUNT(id) AS num FROM wiki where archivee = 0;";
         $stmt = $conn->prepare($sql);
         $stmt->execute([]);
         $result = $stmt->fetchObject();

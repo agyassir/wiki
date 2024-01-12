@@ -68,10 +68,19 @@ return $result;
         $result = $stmt->fetchObject();
         return $result;
     }
+    public function tagsdis($id)
+    {
+        $conn = $this->db->getConnection();
+        $sql = "SELECT tag.* FROM tag WHERE tag.id NOT IN (SELECT tagger.tag FROM tagger JOIN wiki ON wiki.id = tagger.wiki WHERE wiki.id = ?);";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
 
     public function ajout($name){
         $conn = $this->db->getConnection();
-        $sql = "insert into `tag`('type') values (?)";
+        $sql = "INSERT INTO `tag`( `type`) VALUES (?)";
         $stmt = $conn->prepare($sql);
         $rs=    $stmt->execute([$name]);
         return $rs;
@@ -83,11 +92,23 @@ return $result;
         $rs=    $stmt->execute([$id]);
         return $rs;
     }
-    public function update($id,$name){
+    public function update(){
         $conn = $this->db->getConnection();
-        $sql = "UPDATE `tag` SET `tag`= ? WHERE id = ?";
+        $id=$this->getId();
+        $name=$this->getName();
+        $sql = "UPDATE `tag` SET `type`= ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $rs=    $stmt->execute([$name,$id]);
+        $rs=$stmt->execute([$name,$id]);
         return $rs;
+    }
+    public function TagsbyWikisId($id){
+        $conn = $this->db->getConnection();
+        $sql = "SELECT tag.* FROM `wiki` join tagger on tagger.wiki=wiki.id join tag on tagger.tag=tag.id where wiki.id=?;";
+        $stmt = $conn->prepare($sql);
+       $stmt->execute([$id]);
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+
     }
 }

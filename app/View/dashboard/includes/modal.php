@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <!-- Form inside the modal -->
-                <form method="post" action="./user/addWikis">
+                <form method="post" action="?uri=user/addWikis">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">title</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="title">

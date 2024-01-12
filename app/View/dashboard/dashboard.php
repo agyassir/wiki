@@ -42,6 +42,7 @@ include_once '../app/View/dashboard/includes/header.php';
 <?php
 
 foreach ($wiki as $rs):
+    $tags=$this->tagdisponible($rs->id);
 ?> <tr>
                         <th scope="row"><?=$rs->title?></th>
                         <td><?=$rs->description?></td>
@@ -49,6 +50,9 @@ foreach ($wiki as $rs):
                             <a href="./user/deleteWikis/<?=$rs->id?>" type="button" class="btn btn-danger">supprimer</a>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#update<?=$rs->id?>">
                                 modifier
+                            </button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tags<?=$rs->id?>">
+                                ajouter tags
                             </button></td>
                     </tr>
     <div class="modal fade" id="update<?=$rs->id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,6 +95,36 @@ foreach ($wiki as $rs):
             </div>
         </div>
     </div>
+    <div class="modal fade" id="tags<?=$rs->id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ajouter des tags</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form inside the modal -->
+                    <form method="post" action="../user/tagWikis/<?=$rs->id?>">
+                        <label class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">categorie</label>
+                            <?php foreach ($tags as $tag): ?>
+
+                                <div class="form-check mb-2" >
+                                    <input class="form-check-input" type="checkbox" name="type[]" value="<?php echo $tag->id ; ?>">
+                                    <label class="form-check-label" for="tag_id[]"> <?php echo $tag->type; ?> </label>
+                                </div>
+                            <?php endforeach; ?>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="Ajoutertags">ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
                     <?php
     include_once '../app/View/dashboard/includes/modal.php';
 endforeach; ?>
@@ -98,7 +132,9 @@ endforeach; ?>
         </main>
     </div>
 </div>
-
+<?php
+include_once "../app/view/dashboard/includes/footer.php";
+?>
 
 </body>
 

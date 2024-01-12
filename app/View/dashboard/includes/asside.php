@@ -1,4 +1,4 @@
-<aside class="col-md-2 bg-dark text-light p-4 aside">
+<aside class="col-md-2 bg-dark text-light p-4 aside" style="height: 125vh">
                 <ul class="list-unstyled">
                    
                     <li> <i class="fa-solid fa-chart-simple"></i> <a href="#">Dashboard</a></li>
@@ -8,12 +8,12 @@
                             ?>
 
 
-                    <li><a href="./admin/getAllUser">Users</a></li>
+                    <li><a href="../user/getUsers">users</a></li>
                    
                     <li><a href="../user/AgetTags">tags</a></li>
-                    <li><a href="#">categories</a></li>
-                    <li><a href="#">wikis</a></li>
-                    <li><a href="#">authors</a></li>
+                    <li><a href="../user/Acategories">categories</a></li>
+                    <li><a href="../user/AgetAllwiki">wikis</a></li>
+                    <li><a href="../user/archive">archive</a></li>
 
                   
                   <?php

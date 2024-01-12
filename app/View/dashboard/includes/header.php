@@ -1,4 +1,4 @@
-<?php  include_once '../app/View/includes/head.php'  ?>
+<?php  include_once '../app/View/includes/header.php'  ?>
     <style>
         body {
             background-color: #f8f9fa; 
@@ -37,18 +37,29 @@
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
         }
     </style>
-
+</head>
 <body>
 
     <header class="bg-light p-2">
         <div class="container d-flex justify-content-between align-items-center">
             <div>
-               <h4>WIKI</h4>
+               <a href="../?uri=user/home"><img src="../public/assets/images/wikipedia-icon-icons.com-50721-192x192.png" class="w-25"></a>
             </div>
 
 <?php
 if($_SESSION['role_id']==2){
     ?>
+    <div class="dropdown">
+        <button class="btn btn-dark dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <?=$_SESSION['username']; ?>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="?uri=user/home">home</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="?uri=auth/logout">Logout</a></li>
+        </ul>
+    </div>
     <?php
 }
 ?>
@@ -58,7 +69,7 @@ if($_SESSION['role_id']==2){
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="../?uri=user/home">home</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="?uri=auth/logout">Logout</a></li>
                 </ul>

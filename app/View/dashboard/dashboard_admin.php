@@ -27,9 +27,6 @@ include_once '../app/View/dashboard/includes/header.php';
              
             </div>
             </div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajouter">
-                ajouter categorie
-            </button>
             <div>
                 <table class="table">
                     <thead>
@@ -85,8 +82,8 @@ endforeach; ?>
         </main>
     </div>
 </div>
+<?php
+include_once "../app/view/dashboard/includes/footer.php";
+?>
 
 
-</body>
-
-</html>
